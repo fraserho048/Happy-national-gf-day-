@@ -203,16 +203,38 @@ Continue ❤️
 
 <p>Enter our special password</p>
 
-<input
-type="password"
-id="password"
-placeholder="••••">
+<div id="display"
+style="
+font-size:35px;
+letter-spacing:10px;
+margin:20px;
+color:#ff4f87;
+font-weight:bold;
+">
 
-<button onclick="checkPassword()">
+••••
 
-Unlock ❤️
+</div>
 
-</button>
+<div class="keypad">
+
+<button onclick="press('1')">1</button>
+<button onclick="press('2')">2</button>
+<button onclick="press('3')">3</button>
+
+<button onclick="press('4')">4</button>
+<button onclick="press('5')">5</button>
+<button onclick="press('6')">6</button>
+
+<button onclick="press('7')">7</button>
+<button onclick="press('8')">8</button>
+<button onclick="press('9')">9</button>
+
+<button onclick="erase()">⌫</button>
+<button onclick="press('0')">0</button>
+<button onclick="checkPassword()">❤️</button>
+
+</div>
 
 </div>
 
@@ -252,22 +274,53 @@ function showPassword(){
     document.getElementById("passwordPage").classList.add("active");
 }
 
+let enteredPassword = "";
+
+function press(num){
+
+    if(enteredPassword.length >= 4) return;
+
+    enteredPassword += num;
+
+    document.getElementById("display").innerHTML =
+        "❤️".repeat(enteredPassword.length) +
+        "•".repeat(4-enteredPassword.length);
+
+}
+
+function erase(){
+
+    enteredPassword = enteredPassword.slice(0,-1);
+
+    document.getElementById("display").innerHTML =
+        "❤️".repeat(enteredPassword.length) +
+        "•".repeat(4-enteredPassword.length);
+
+}
+
 function checkPassword(){
 
-    let pass=document.getElementById("password").value;
-
-    if(pass==="1711"){
+    if(enteredPassword==="1711"){
 
         document.getElementById("passwordPage").classList.remove("active");
+
         document.getElementById("giftPage").classList.add("active");
 
     }else{
 
         alert("Wrong Password Baby 💜");
 
+        enteredPassword="";
+
+        document.getElementById("display").innerHTML="••••";
+
     }
 
 }
+
+    
+    
+
 
 function openGift(number){
 
