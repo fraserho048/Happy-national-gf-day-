@@ -64,36 +64,25 @@ transform:scale(1.05);
 }
 
 .qr{
-
-width:230px;
-height:230px;
-
+width:260px;
+height:260px;
 background:white;
+padding:20px;
 
-padding:15px;
-
-clip-path:polygon(
-50% 90%,
-10% 45%,
-10% 25%,
-20% 10%,
-35% 5%,
-50% 20%,
-65% 5%,
-80% 10%,
-90% 25%,
-90% 45%
-);
+clip-path:path("M130 245 L25 135 C-10 95 10 35 65 35 C100 35 120 60 130 75 C140 60 160 35 195 35 C250 35 270 95 235 135 Z");
 
 box-shadow:
-
 0 0 25px #ff5f9d,
 0 0 50px #ffb6d9;
 
 animation:heartBeat 1.5s infinite;
-
 overflow:hidden;
+}
 
+.qr img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 
